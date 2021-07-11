@@ -25,7 +25,25 @@ app.use('/api/v1/login', loginRouter)
  
 app.get('/',  (req, res) => {
   res.send('Hello World')
+});
+
+// 404 error 
+app.use ((req, res, next) => {
+
+  const error = new Error ("Resource not found ")
+  error.status = 404;
+
+  next(error);
+
+
 })
+
+
+// handle error
+import { handleError } from "./utils/errorHandler.js";
+app.use((error,req, res, next ) => {
+ handleError(error, res)
+}) 
  
 app.listen(PORT, error => {
 if(error) console.log(error)
