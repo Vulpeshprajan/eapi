@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import AdminUsersSchema from "./User.schema.js";
 
 export const createUser = userObj => {
